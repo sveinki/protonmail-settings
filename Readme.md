@@ -56,9 +56,21 @@ One key/env:
 > Default === dirname with the default git clone dir.
 
 
-## Sync translations
+## Sync translations [App  to crowdin]
 
 You can sync them via `$ npm run i18n:upgrade`, it will:
 - Extract translations
 - Push them to crowndin
 - Create a commit with them on the repo
+
+## Sync translations [Crowdin to our App]
+
+To get latest translations available on crowdin, you can run `$ npm run i18n:getlatest`.
+It will:
+- Get list of translations available (default same as proton-i18n crowdin --list --type --limit=95)
+- Upgrade our translations with ones from crowdin
+- Store a cache of translations available in the app
+- Export translations as JSON
+- Commit everything
+
+> :warning: If you want to get only a **custom** list of translations, configure it inside `po/i18n.txt` and run `$ npm run i18n:getlatest -- --custom`
